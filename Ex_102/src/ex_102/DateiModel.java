@@ -5,17 +5,35 @@
  */
 package ex_102;
 
+import java.io.File;
+import java.util.ArrayList;
+import javax.swing.AbstractListModel;
+
 /**
  *
  * @author oskar
  */
-public class DateiModel {
+public class DateiModel extends AbstractListModel{
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private ArrayList<Datei> files = new ArrayList<>();
+    private ArrayList<Datei> filtered = new ArrayList<>();
+    
+    public void add(Datei d){
+        files.add(d);
+        filtered.add(d);
+        fireContentsChanged(this, 0, filtered.size()-1);
     }
+
+    @Override
+    public int getSize() {
+        return filtered.size();
+    }
+
+    @Override
+    public Object getElementAt(int index) {
+        return filtered.get(index);
+    }
+    
+    
     
 }

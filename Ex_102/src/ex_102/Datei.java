@@ -5,10 +5,29 @@
  */
 package ex_102;
 
+import java.io.File;
+
 /**
  *
  * @author oskar
  */
-public class Datei {
+public class Datei extends File{
+    
+    public Datei(String pathname) {
+        super(pathname);
+    }
+
+    @Override
+    public String toString() {
+        File dir = new File(".");
+        if(dir.isDirectory()){
+            return this.getName();
+        }
+        else{
+            return String.format("%s    %s",this.getName(),);
+        }
+    }
+    
+    
     
 }
