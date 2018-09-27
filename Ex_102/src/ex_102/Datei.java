@@ -5,6 +5,8 @@
  */
 package ex_102;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -16,8 +18,19 @@ import java.time.format.DateTimeFormatter;
  */
 public class Datei extends File{
     
+    private Color color;
+    
     public Datei(String pathname) {
         super(pathname);
+        
+        if(this.isDirectory())
+            color=Color.RED;
+        else
+            color=Color.blue;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     @Override

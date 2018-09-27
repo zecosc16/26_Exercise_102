@@ -7,6 +7,7 @@ package ex_102;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.AbstractListModel;
 
 /**
@@ -21,6 +22,7 @@ public class DateiModel extends AbstractListModel{
     public void add(Datei d){
         files.add(d);
         filtered.add(d);
+        Collections.sort(filtered, new FileComparer());
         fireContentsChanged(this, 0, filtered.size()-1);
     }
 

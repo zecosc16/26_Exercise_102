@@ -19,6 +19,7 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
         initComponents();
         
         list.setModel(bl);
+        list.setCellRenderer(new MyListCellRenderer());
         
         File dir = new File(".");
         bl.add(new Datei(dir.getAbsoluteFile()+"/.."));
@@ -41,6 +42,7 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        list.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         list.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
