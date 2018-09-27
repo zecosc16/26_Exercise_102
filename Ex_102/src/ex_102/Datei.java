@@ -6,6 +6,9 @@
 package ex_102;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -20,11 +23,22 @@ public class Datei extends File{
     @Override
     public String toString() {
         File dir = new File(".");
-        if(dir.isDirectory()){
+        if(this.isDirectory()){
             return this.getName();
         }
         else{
-            return String.format("%s    %s",this.getName(),);
+            String Att="";
+            if(this.canRead())
+                Att+="R";
+            if(this.canWrite())
+                Att+="W";
+            if(this.isHidden())
+                Att+="H";
+            if(this.canExecute())
+                Att+="X";
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM-yyyy hh:mm");
+            LocalDateTime ldt = LocalDateTime.ofEpochSecond(this.lastModified()/1000,0,ZoneOffset.UTC);
+            return String.format("%-35s  %-25s  %dKB   %8s",this.getName(),dtf.format(ldt),this.length()/1024,Att);
         }
     }
     

@@ -21,6 +21,7 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
         list.setModel(bl);
         
         File dir = new File(".");
+        bl.add(new Datei(dir.getAbsoluteFile()+"/.."));
         for(File f : dir.listFiles()){
             bl.add(new Datei(f.getAbsolutePath()));
         }
